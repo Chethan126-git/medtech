@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elderly Life - All Time Guider</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@2/dist/tesseract.min.js"></script>
+</head>
+<body>
+
+<!-- Global Hyper-Realistic Background -->
+<div class="background"></div>
+
+<!-- Welcome Screen -->
+<div class="container" id="welcomeScreen">
+    <h1>Elderly Life - All Time Guider</h1>
+    <p>Your trusted companion for a safer, healthier, and more independent life.</p>
+    <button id="nextBtn">Next</button>
+</div>
+
+<!-- Category Screen -->
+<div class="container categories" id="categoryScreen">
+    <h1>Choose a Service</h1>
+    <div class="card" onclick="showSubMenu('reminder')">
+        <h2>⏰ Reminder System</h2>
+        <p>Manage medications, appointments, and daily routines.</p>
+    </div>
+    <div class="card" onclick="showSubMenu('scan')">
+        <h2>📄 Scan Prescription</h2>
+        <p>Upload prescription images and get medicine reminders automatically.</p>
+    </div>
+    <div class="card">
+        <h2>😊 Mood & Activity Engagement</h2>
+        <p>Stay mentally active and emotionally balanced with guided activities.</p>
+    </div>
+</div>
+
+<!-- Reminder Sub-Menu -->
+<div class="container categories" id="reminderMenu">
+    <h1>Reminder Options</h1>
+    <div class="card" onclick="showMedicineReminder()">1️⃣ Medicine Reminders</div>
+    <div class="card">2️⃣ Scan Prescription</div>
+    <div class="card">3️⃣ Daily Routine Reminders</div>
+    <button class="backBtn" onclick="backToCategories()">Back</button>
+</div>
+
+<!-- Medicine Reminder Screen -->
+<div class="container categories" id="medicineReminder">
+    <h2>AI Medicine Assistant</h2>
+    <input type="text" id="name" placeholder="Medicine Name">
+    <input type="text" id="dose" placeholder="Dose (ex: 1 tablet)">
+    <input type="time" id="time">
+    <input type="file" id="imageUpload" accept="image/*">
+    <button id="addMedicineBtn">Add Reminder</button>
+    <h3 id="status"></h3>
+    <div id="reminderImage"></div>
+    <button class="backBtn" onclick="backToReminderMenu()">Back</button>
+</div>
+
+<!-- Scan Prescription Screen -->
+<div class="container categories" id="scanPrescription">
+    <h2>CarePulse - Prescription Scanner & Reminder</h2>
+    <input type="file" id="upload" accept="image/*"><br>
+    <button onclick="scanText()">Scan Prescription</button>
+
+    <div id="result"></div>
+    <button onclick="saveData()">Save Prescription</button>
+
+    <div id="reminder">
+        <h3>Set Next Checkup Date 📅</h3>
+        <input type="date" id="nextCheckup">
+        <button onclick="saveReminder()">Save Reminder</button>
+        <p id="savedReminder"></p>
+    </div>
+
+    <button class="backBtn" onclick="backToCategoriesFromScan()">Back</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
